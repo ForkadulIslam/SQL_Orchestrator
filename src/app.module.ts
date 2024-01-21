@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './auth/user.entity';
+import { UserModule } from './user/user.module';
+import { User } from './user/user.entity';
 
 @Module({
   imports: [
@@ -13,11 +13,11 @@ import { User } from './auth/user.entity';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'nest_project',
+      database: 'tech_chalange',
       entities: [User],
-      synchronize: true,
+      synchronize: false,
     }),
-    AuthModule
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
